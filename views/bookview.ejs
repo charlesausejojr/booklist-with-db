@@ -1,0 +1,43 @@
+<%- include("upper") -%>
+<title>Book View</title>
+<%- include("middle") -%>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">booklist</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="add">Add Book</a>
+          <a class="nav-link right-link" href="/">About</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <table class="table table-light table-striped">
+      <thead class="thead-light">
+        <th  class="left-th">Book Name</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th class="right-th"></th>
+      </thead>
+
+<%if(newBooks.length!=0) {%>
+  <% newBooks.forEach(function(book){  %>
+    <tr>
+      <td class="book-title"><%= book.title %></td>
+      <td><%= book.author %></td>
+      <td><%= book.genre %></td>
+      <td class="two-buttons">
+      <form class="d-inline" action="/info/<%= book.title %>" method="get">
+          <button class="btn btn-sm btn-outline-dark" type="submit" name="buttonId" value="<%= book._id %>">More Info</button>
+      </form>
+      </td>
+    </tr>
+  <% }) %>
+<%}%>
+      </table>
+    </div>
+
+  <%- include("lower") -%>

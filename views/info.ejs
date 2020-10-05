@@ -1,0 +1,31 @@
+<%- include("upper") -%>
+<title>Book Info</title>
+<%- include("middle") -%>
+
+  <div class="info-box">
+    <div class="row d-block">
+
+        <h2><%= title %></h2>
+        <h6>Date posted: <%= date %></h4>
+
+      <div class="about-box">
+        <p><%= info %></p>
+
+      </div>
+
+
+    </div>
+    <form class="d-inline">
+      <button class="btn btn-outline-dark shadow-lg button-back" type="button" name="button" onclick="history.back()">Back</button>
+    </form>
+    <form class="d-inline" action="/update/<%= title %>" method="get">
+      <button class="btn btn-outline-dark shadow-lg" type="submit" name="update" value="<%= title %>">Update</button>
+    </form>
+    <form class="d-inline" action="/delete" method="post">
+      <input type="hidden" name="bookName" value="<%= title %>"></input>
+      <button class="btn btn-dark shadow-lg" type="button" name="button" data-toggle="modal" data-target="#exampleModal">Delete</button>
+      <%- include("modal_delete") -%>
+    </form>
+  </div>
+
+<%- include("lower") -%>
